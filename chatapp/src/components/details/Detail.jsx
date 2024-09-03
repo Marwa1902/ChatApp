@@ -1,7 +1,7 @@
 import "./detail.css"
 const Detail = () => {
     return (
-        <div className="">Detail</div>
+        <div className='detail'>Detail</div>
     )
 }
 export default Detail
