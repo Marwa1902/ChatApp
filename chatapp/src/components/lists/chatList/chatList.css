@@ -1,4 +1,7 @@
 .chatList{
+    flex: 1;
+    overflow: scroll;
+    scrollbar-width: thin;
     .search{
         display: flex;
         align-items: center;
@@ -6,18 +9,66 @@
 
         .searchBar{
             flex: 1;
-            background-color: rgba(0, 0, 0, 0.385);
+            background-color: rgba(255, 255, 255, 0.711);
             display: flex;
             align-items: center;
             gap: 20px;
             border-radius: 10px;
+            padding: 10px;
 
-            input{
+
+            input{ /*the input for the search bar*/
                 background-color: transparent;
                 border: none;
                 outline: none;
-                color: white;
+                color: rgb(0, 0, 0);
                 flex: 1;
+            }
+
+            img{ /*the search image in the search bar*/
+                width: 20px;
+                height: 20px;
+            }
+
+        }
+
+        .add{/*the plus img next to the search bar*/
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.711);
+            border-radius: 10px;
+            padding: 0;
+            cursor: pointer;
+        }
+    }
+
+    .item{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.086);
+
+        img{/*this is for the display pictire shown on the left side*/
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .texts{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            span{
+                font-weight: 500;
+            }
+
+            p{
+                font-size: 14px;
+                font-weight: 300;
             }
         }
     }
