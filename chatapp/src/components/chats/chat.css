@@ -1,9 +1,11 @@
 .chat{
+    display:flex;
+    flex-direction: column;
     flex:2;
     border-left: 1px solid rgba(255, 255, 255, 0.086);
     border-right: 1px solid rgba(255, 255, 255, 0.086);
     height: 100%;
-
+    
     .top{
         padding: 20px;
         display: flex;
@@ -53,7 +55,8 @@
     }
 
     .center{
-
+        padding: 20px;
+        flex: 1;
     }
 
     .bottom{
@@ -63,6 +66,7 @@
         justify-content: space-between;
         border-top: 1px solid rgba(255, 255, 255, 0.086);
         gap: 20px;
+        margin-top: auto;
 
         .icons{
             display: flex;
@@ -85,6 +89,16 @@
             font-size: 16px;
             padding: 20px;
             border-radius: 10px;
+        }
+
+        .emoji{
+            position: relative;
+
+            .epicker{
+                position: absolute;
+                bottom: 50px;
+                left: 0;
+            }
         }
 
         .sendBtn{

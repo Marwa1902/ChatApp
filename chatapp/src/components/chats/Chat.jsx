@@ -44,7 +44,10 @@ const Chat = () => {
                     <img src="./emoji.png" alt=""
                         onClick={() => setOpen((prev) => !prev)}
                     />
-                    <EmojiPicker open = {open} onEmojiClick={handleEmoji}/>
+
+                    <div className="epicker">
+                        <EmojiPicker open = {open} onEmojiClick={handleEmoji}/>
+                    </div>
                 </div>
                 <button className="sendBtn"> Send </button>
             </div>
