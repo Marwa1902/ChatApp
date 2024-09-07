@@ -30,7 +30,131 @@ const Chat = () => {
                     <img src="./info.png" alt="" />
                 </div>
             </div> 
-            <div className='center'></div>
+            <div className='center'>
+                <div className="message">
+                    <img src="./avatar.png" alt="" />
+                    <div className="texts">
+                        <p>
+                        Wake up to reality! Nothing ever goes as planned in this accursed world. 
+                        The longer you live, the more you realize that 
+                        the only things that truly exist in this reality are merely pain.
+                        suffering and futility. 
+                        Listen, everywhere you look in this world,
+                        wherever there is light, there will always be shadows to be found 
+                        as well. As long as there is a concept of victors, 
+                        the vanquished will also exist. 
+                        The selfish intent of wanting to preserve peace, initiates war. 
+                        and hatred is born in order to protect love. 
+                        There are nexuses causal relationships that cannot be separated 
+                        - Madara Uchiha,
+                        </p>
+                        <span> 1 min ago </span>
+                    </div>
+                </div>
+
+                <div className="message own">
+                    <div className="texts">
+                        <p>
+                        Wake up to reality! Nothing ever goes as planned in this accursed world. 
+                        The longer you live, the more you realize that 
+                        the only things that truly exist in this reality are merely pain.
+                        suffering and futility. 
+                        Listen, everywhere you look in this world,
+                        wherever there is light, there will always be shadows to be found 
+                        as well. As long as there is a concept of victors, 
+                        the vanquished will also exist. 
+                        The selfish intent of wanting to preserve peace, initiates war. 
+                        and hatred is born in order to protect love. 
+                        There are nexuses causal relationships that cannot be separated 
+                        - Madara Uchiha,
+                        </p>
+                        <span> 1 min ago </span>
+                    </div>
+                </div>
+
+                <div className="message">
+                    <img src="./avatar.png" alt="" />
+                    <div className="texts">
+                        <p>
+                        Wake up to reality! Nothing ever goes as planned in this accursed world. 
+                        The longer you live, the more you realize that 
+                        the only things that truly exist in this reality are merely pain.
+                        suffering and futility. 
+                        Listen, everywhere you look in this world,
+                        wherever there is light, there will always be shadows to be found 
+                        as well. As long as there is a concept of victors, 
+                        the vanquished will also exist. 
+                        The selfish intent of wanting to preserve peace, initiates war. 
+                        and hatred is born in order to protect love. 
+                        There are nexuses causal relationships that cannot be separated 
+                        - Madara Uchiha,
+                        </p>
+                        <span> 1 min ago </span>
+                    </div>
+                </div>
+
+                <div className="message own">
+                    <div className="texts">
+                        <p>
+                        Wake up to reality! Nothing ever goes as planned in this accursed world. 
+                        The longer you live, the more you realize that 
+                        the only things that truly exist in this reality are merely pain.
+                        suffering and futility. 
+                        Listen, everywhere you look in this world,
+                        wherever there is light, there will always be shadows to be found 
+                        as well. As long as there is a concept of victors, 
+                        the vanquished will also exist. 
+                        The selfish intent of wanting to preserve peace, initiates war. 
+                        and hatred is born in order to protect love. 
+                        There are nexuses causal relationships that cannot be separated 
+                        - Madara Uchiha,
+                        </p>
+                        <span> 1 min ago </span>
+                    </div>
+                </div>
+
+                <div className="message">
+                    <img src="./avatar.png" alt="" />
+                    <div className="texts">
+                        <p>
+                        Wake up to reality! Nothing ever goes as planned in this accursed world. 
+                        The longer you live, the more you realize that 
+                        the only things that truly exist in this reality are merely pain.
+                        suffering and futility. 
+                        Listen, everywhere you look in this world,
+                        wherever there is light, there will always be shadows to be found 
+                        as well. As long as there is a concept of victors, 
+                        the vanquished will also exist. 
+                        The selfish intent of wanting to preserve peace, initiates war. 
+                        and hatred is born in order to protect love. 
+                        There are nexuses causal relationships that cannot be separated 
+                        - Madara Uchiha,
+                        </p>
+                        <span> 1 min ago </span>
+                    </div>
+                </div>
+
+                <div className="message own">
+                    <div className="texts">
+                    <img src="https://preview.redd.it/what-makes-madara-uchiha-such-a-good-character-when-it-v0-316dlixm4tgc1.jpeg?auto=webp&s=b7df787f155166613508760fc26ed8544a4c35aa" alt="" />
+                        <p>
+                        Wake up to reality! Nothing ever goes as planned in this accursed world. 
+                        The longer you live, the more you realize that 
+                        the only things that truly exist in this reality are merely pain.
+                        suffering and futility. 
+                        Listen, everywhere you look in this world,
+                        wherever there is light, there will always be shadows to be found 
+                        as well. As long as there is a concept of victors, 
+                        the vanquished will also exist. 
+                        The selfish intent of wanting to preserve peace, initiates war. 
+                        and hatred is born in order to protect love. 
+                        There are nexuses causal relationships that cannot be separated 
+                        - Madara Uchiha,
+                        </p>
+                        <span> 1 min ago </span>
+                    </div>
+                </div>
+            </div>
             <div className='bottom'>
                 <div className="icons">
                     <img src="./img.png" alt="" />
@@ -56,3 +180,4 @@ const Chat = () => {
 }
 
 export default Chat
+
