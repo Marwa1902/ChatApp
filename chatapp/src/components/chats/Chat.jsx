@@ -1,9 +1,17 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import "./chat.css"
 import EmojiPicker from "emoji-picker-react"
 const Chat = () => {
     const [open, setOpen] = useState(false); //this is for the emoji
     const [text, setText] = useState("");
+
+    //endRef used for automic scroll to last message in a chat when refreshed
+    const endRef = useRef(null)
+
+    useEffect(() => {
+        endRef.current?.scrollIntoView({behavior: "smooth"});
+
+    }, []);
 
     //function to handle emoji picking and making it appear on the placeholder for typing
     const handleEmoji = e =>{
@@ -153,6 +161,9 @@ const Chat = () => {
                         </p>
                         <span> 1 min ago </span>
                     </div>
+                </div>
+                <div ref={endRef}>  {/*this is for reaching end of the messages whenever the page is refreshed*/}
+
                 </div>
             </div>
             <div className='bottom'>

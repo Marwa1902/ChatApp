@@ -5,9 +5,9 @@ import List from "./components/lists/List";
 const App = () => {
   return (
     <div className='container'>
-      <List/>
-      <Chat/>
-      <Detail/>
+      <List/> {/* containts the names of the messegers */}
+      <Chat/>  {/* containts the chats between users */}
+      <Detail/>  {/* containts the necessary details */}
     </div>
   )
 }
