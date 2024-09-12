@@ -1,5 +1,6 @@
 import { useState } from "react"
 import "./chatList.css"
+import AddingUser from "./addingUser/addingUser";
 
 const ChatList = () => {
     const [addMode, setAddMode] = useState(false); //when we click the plus/add sign, the image will change to minus
@@ -42,6 +43,8 @@ const ChatList = () => {
                     <p> السلام عليكم </p>
                 </div>
             </div>
+            {addMode && <AddingUser/>} {/* when we click the tiny + next to search
+            , the search appears on the middle of the screen because of this line of code */}
         </div>
     )
 }
