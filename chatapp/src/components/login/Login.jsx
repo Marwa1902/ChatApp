@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./login.css";
 import { toast } from "react-toastify";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../library/firebase";
 
 const Login = () => {
 
@@ -25,20 +27,40 @@ const Login = () => {
        //toast.error("Oh no, there is an error");
     };
 
+    const handleRegister = async e=>{ //async function because we are making a db request
+        e.preventDefault()
+
+        const formData = new FormData(e.target); //e.target passed to represnt the form
+
+        const { username, email, pass } = Object.fromEntries(formData);
+
+        //console.log(username, email)
+
+        try{
+
+            const res = await createUserWithEmailAndPassword(auth, email, pass)
+        }
+        
+        catch(err){
+                console.log(err)
+                toast.error(err.message)
+            }
+    };
+
     return (
         <div className='login'>
             <div className="item">
                 <h2> Hello, Welcome Back </h2>
                 <form onSubmit={handleLogin}> {/* to see if user has registered an acocount, sends a notidication */}
                     <input type="text" placeholder="Email" name="email" />
-                    <input type="password" placeholder="Password" name="password" />
+                    <input type="password" placeholder="Password" name="pass" />
                     <button> Log in </button>
                 </form>
             </div>
             <div className="separator"></div>
             <div className="item">
             <h2> Connect with people </h2>
-                <form> 
+                <form onSubmit={ handleRegister }> 
                     <label htmlFor="file">
                         <img src= {avatar.url || "./avatar.png"} alt=""/>
                         Upload Image 
@@ -46,7 +68,7 @@ const Login = () => {
                     <input type="file" id="file" style={{display: "none"}} onChange={handleAvatar}/>
                     <input type="text" placeholder="Username" name="username" />
                     <input type="text" placeholder="Email" name="email" />
-                    <input type="password" placeholder="Password" name="password" />
+                    <input type="password" placeholder="Password" name="pass" />
                     <button> Register </button>
                 </form>
             </div>
