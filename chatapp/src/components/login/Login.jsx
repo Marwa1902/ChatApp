@@ -2,14 +2,18 @@ import { useState } from "react";
 import "./login.css";
 import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../library/firebase";
+import { auth, db } from "../../library/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import upload from "../../library/upload";
 
 const Login = () => {
 
     const [avatar, setAvatar] = useState({
         file: null,
         url:""
-    })
+    });
+
+    const [loading, setLoading] = useState(false)
 
     const handleAvatar = e =>{
         if(e.target.files[0]){
@@ -29,6 +33,7 @@ const Login = () => {
 
     const handleRegister = async e=>{ //async function because we are making a db request
         e.preventDefault()
+        setLoading(true)
 
         const formData = new FormData(e.target); //e.target passed to represnt the form
 
@@ -38,12 +43,33 @@ const Login = () => {
 
         try{
 
-            const res = await createUserWithEmailAndPassword(auth, email, pass)
+            const res = await createUserWithEmailAndPassword(auth, email, pass) //creating new user
+            const imgURL = await upload(avatar.file) //for profile picture
+
+            await setDoc(doc (db, "users", res.user.uid), { //adding the new user to the db
+                username,
+                email,
+                avatar: imgURL,
+                id: res.user.uid,
+                blocked: [],
+
+
+            });
+
+            await setDoc(doc (db, "userchats", res.user.uid), { //adding the chat to db
+                chats: [], 
+            });
+
+            toast.success("Hurray! Account created, you can login")
         }
         
         catch(err){
                 console.log(err)
                 toast.error(err.message)
+            }
+
+            finally{
+                setLoading(false);
             }
     };
 
@@ -54,7 +80,7 @@ const Login = () => {
                 <form onSubmit={handleLogin}> {/* to see if user has registered an acocount, sends a notidication */}
                     <input type="text" placeholder="Email" name="email" />
                     <input type="password" placeholder="Password" name="pass" />
-                    <button> Log in </button>
+                    <button disabled = {loading}> {loading ? "Loading" : "Log in"}  </button>
                 </form>
             </div>
             <div className="separator"></div>
@@ -69,7 +95,7 @@ const Login = () => {
                     <input type="text" placeholder="Username" name="username" />
                     <input type="text" placeholder="Email" name="email" />
                     <input type="password" placeholder="Password" name="pass" />
-                    <button> Register </button>
+                    <button disabled = {loading}> {loading ? "Loading" : "Register"} </button>
                 </form>
             </div>
         </div>
