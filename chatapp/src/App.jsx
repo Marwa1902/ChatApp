@@ -5,7 +5,8 @@ import List from "./components/lists/List";
 import Login from "./components/login/login";
 import Notification from "./components/notifications/Notification";
 import { onAuthStateChanged } from "firebase/auth";
-
+import { auth } from "./library/firebase"
+// https://www.youtube.com/watch?v=domt_Sx-wTY
 const App = () => {
 
   const user = false;

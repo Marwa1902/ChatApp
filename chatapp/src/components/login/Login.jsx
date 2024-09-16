@@ -24,16 +24,15 @@ const Login = () => {
         }
     }
 
-    const handleLogin = async e=>{
+    const handleLogin = async (e)=>{
         e.preventDefault();
+        setLoading(true);
 
         const formData = new FormData(e.target); //e.target passed to represnt the form
-
         const {email, pass } = Object.fromEntries(formData);
        // toast.warn("Ops, you dont have an account");
        // toast.success("Welcome Back buddy!");
        //toast.error("Oh no, there is an error");
-        setLoading(true);
 
         try{
             await signInWithEmailAndPassword(auth, email, pass);
