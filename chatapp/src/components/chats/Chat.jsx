@@ -1,9 +1,16 @@
-import { useEffect, useRef, useState } from "react"
-import "./chat.css"
-import EmojiPicker from "emoji-picker-react"
+import { useEffect, useRef, useState } from "react";
+import "./chat.css";
+import EmojiPicker from "emoji-picker-react";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../library/firebase";
+import { useChatStore } from "../../library/chatStore";
+
 const Chat = () => {
     const [open, setOpen] = useState(false); //this is for the emoji
+    const [chat, setChat] = useState(); //this is for the chat
     const [text, setText] = useState("");
+
+    const { chatId } = useChatStore();
 
     //endRef used for automic scroll to last message in a chat when refreshed
     const endRef = useRef(null)
@@ -12,6 +19,16 @@ const Chat = () => {
         endRef.current?.scrollIntoView({behavior: "smooth"});
 
     }, []);
+
+    useEffect(() => {
+        const unSub = onSnapshot(doc(db, "chats", chatId), (res) =>{
+            setChat(res.data())
+        });
+
+        return () => {
+            unSub();
+        }
+    }, [chatId]);
 
     //function to handle emoji picking and making it appear on the placeholder for typing
     const handleEmoji = e =>{

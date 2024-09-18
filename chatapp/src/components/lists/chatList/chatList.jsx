@@ -4,12 +4,15 @@ import AddingUser from "./addingUser/addingUser";
 import { useUserStore } from "../../../library/userStore";
 import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../../../library/firebase";
+import { useChatStore } from "../../../library/chatStore";
 
 const ChatList = () => {
     const [chats, setChats] = useState([]); //when we click the plus/add sign, the image will change to minus
     const [addMode, setAddMode] = useState(false);
 
     const {currentUser} = useUserStore()
+    const { chatId, changeChat } = useChatStore()
+
 
     useEffect(()=> {
         const unSub = onSnapshot(doc(db, "userchats", currentUser.id), async (res) => {
@@ -34,6 +37,11 @@ const ChatList = () => {
             unSub()
         }
     }, [currentUser.id]);
+
+    const handleSelect = async (chat) => {
+
+        changeChat(chat.chatId, chat.user)
+    }
     
     return (
         <div className='chatList'>
@@ -47,7 +55,7 @@ const ChatList = () => {
                 /> 
             </div>
             {chats.map((chat) =>(
-                <div className="item" key={chat.chatId}>
+                <div className="item" key={chat.chatId} onClick={()=> handleSelect(chat)}>
                     <img src= {chat.user.avatar || "./avatar.png"} alt="" />
                     <div className="texts">
                         <span> {chat.user.username} </span>
