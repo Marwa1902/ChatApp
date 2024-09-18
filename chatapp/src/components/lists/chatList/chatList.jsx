@@ -13,21 +13,21 @@ const ChatList = () => {
 
     useEffect(()=> {
         const unSub = onSnapshot(doc(db, "userchats", currentUser.id), async (res) => {
-            const items = res.data()
+            const items = res.data().chats;
             //setChats(doc.data());
 
             const promises = items.map(async(item) => {
-                const userDocRef = doc(db, "users", item.recieverId);
-                const userDocSnap = await getDoc(docRef);
+                const userDocRef = doc(db, "users", item.receiverId);
+                const userDocSnap = await getDoc(userDocRef);
 
                 const user = userDocSnap.data();
 
-                return {...item, user};
+                return {...item,user};
             });
 
             const chatData = await Promise.all(promises);
 
-            setChats(chatData.sort((a, b) => b.updatedAt = a.updatedAt));
+            setChats(chatData.sort((a, b) => b.updatedAt - a.updatedAt));
         });
 
         return () => {
@@ -47,18 +47,18 @@ const ChatList = () => {
                 /> 
             </div>
             {chats.map((chat) =>(
-                <div className="item" key={chat.chatID}>
-                    <img src="./avatar.png" alt="" />
+                <div className="item" key={chat.chatId}>
+                    <img src= {chat.user.avatar || "./avatar.png"} alt="" />
                     <div className="texts">
-                        <span> Marwa </span>
+                        <span> {chat.user.username} </span>
                         <p> {chat.lastMessage} </p>
                     </div>
                 </div>
-            ) )}
+            ))}
             {addMode && <AddingUser/>} {/* when we click the tiny + next to search
             , the search appears on the middle of the screen because of this line of code */}
         </div>
-    )
-}
+    );
+};
 
 export default ChatList

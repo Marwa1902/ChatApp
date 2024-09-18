@@ -24,30 +24,6 @@ const Login = () => {
         }
     }
 
-    const handleLogin = async (e)=>{
-        e.preventDefault();
-        setLoading(true);
-
-        const formData = new FormData(e.target); //e.target passed to represnt the form
-        const {email, pass } = Object.fromEntries(formData);
-       // toast.warn("Ops, you dont have an account");
-       // toast.success("Welcome Back buddy!");
-       //toast.error("Oh no, there is an error");
-
-        try{
-            await signInWithEmailAndPassword(auth, email, pass);
-        }
-
-        catch(err){
-        console.log(err);
-        toast.error(err.message);
-        }
-
-        finally{
-            setLoading(false);
-        }
-    };
-
     const handleRegister = async e=>{ //async function because we are making a db request
         e.preventDefault()
         setLoading(true)
@@ -90,6 +66,29 @@ const Login = () => {
             }
     };
 
+    const handleLogin = async (e)=>{
+        e.preventDefault();
+        setLoading(true);
+
+        const formData = new FormData(e.target); //e.target passed to represnt the form
+        const {email, pass } = Object.fromEntries(formData);
+       // toast.warn("Ops, you dont have an account");
+       // toast.success("Welcome Back buddy!");
+       //toast.error("Oh no, there is an error");
+
+        try{
+            await signInWithEmailAndPassword(auth, email, pass);
+        }
+
+        catch(err){
+        console.log(err);
+        toast.error(err.message);
+        }
+
+        finally{
+            setLoading(false);
+        }
+    };
     return (
         <div className='login'>
             <div className="item">

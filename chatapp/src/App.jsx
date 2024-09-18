@@ -34,11 +34,9 @@ const App = () => {
       ) : (
         <Login/>
       )}
-
       <Notification/>
-      
     </div>
   );
 };
 
-export default App
+export default App;
